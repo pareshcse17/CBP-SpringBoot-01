@@ -35,4 +35,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${{secrets.EC2_USER_FIRST_APP}}@${{secrets.EC2_HOST_FIRST_APP}} << 'EOF'
             pkill -f 'java -jar' || true  # Kill existing Java process, ignore if none
             nohup java -jar ~/demo-0.0.2-SNAPSHOT.jar &
+            exit
           EOF
