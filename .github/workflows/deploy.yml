@@ -30,9 +30,9 @@ jobs:
       - name: Deploy to EC2
         run: |
           # Upload JAR
-          scp -i private_key.pem ./target/demo-0.0.2-SNAPSHOT.jar ${{secrets.EC2_USER_FIRST_APP}}@${{secrets.EC2_HOST_FIRST_APP}}:~/
+          scp -o StrictHostKeyChecking=no -i private_key.pem ./target/demo-0.0.2-SNAPSHOT.jar ${{secrets.EC2_USER_FIRST_APP}}@${{secrets.EC2_HOST_FIRST_APP}}:~/
           # Restart the app (kill existing process and start new one)
-          ssh -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             pkill -f 'java -jar' || true  # Kill existing Java process, ignore if none
             nohup java -jar ~/my-app.jar &
           EOF
