@@ -43,6 +43,7 @@ public class UserService {
         List<User> userList;
         try {
             userList = userRepository.findAll();
+            System.out.println(userList);
             if (userList.isEmpty()) {
                 throw new UserNotFoundException("No users found");
             }
