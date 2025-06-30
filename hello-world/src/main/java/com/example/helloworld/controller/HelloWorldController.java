@@ -11,6 +11,6 @@ public class HelloWorldController {
 
     @GetMapping("/hello")
     public String sayHello() {
-        return "<html><body><h1 style='color: red;'>❤️I love you❤️, My Ritika doll baby girl</h1></body></html>";
+        return "<html><body><h1 style='color: red;'>hello world</h1></body></html>";
     }
 }
